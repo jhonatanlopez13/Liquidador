@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container col-md-12" style=" margin:0 !important">
+    <nav class="navbar navbar-dark primary-color col-md-12">
+      <a class="navbar-brand" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="10%" height="20%" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+          <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+          <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
+        </svg>
+          <h1>Caculadora Facturacion de Nomina</h1>
+      </a>
+    </nav>
+    <div class="container col-md-12">
+      <h1>Liquidador de Nomina</h1>
+   
+      <div class="row" style="margin: 20px; margin-left: 10%;">
+        <div class="card  col-md-5 " style="height: 60%; border: green 2px solid; margin: 5px;" >
+          <div class="form-group">
+            <label for="">sueldo</label>
+            <input class="form-control" type="number" id="valorsueldo">
+          </div>
+          <div class="form-group">
+            <label for="">dias laborados</label>
+            <input class="form-control" type="number"name="diaLabor"  id="daysDiscount">
+          </div>
+          <div class="form-group">
+            <label for="iniciocalendario">fecha inicial</label>
+            <input type="date"  id="fechaInicial" class="form-control" oninput="calculardias()">
+          </div>
+          <div class="form-group">
+            <label for="iniciocalendario">fecha final</label>
+            <input type="date"  id="fechaFinal" class="form-control" oninput="calculardias()">
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-outline-primary" onclick="Calcular()" style="margin-bottom: 10%;">calcular</button>
+            <button onclick="abrir()" class="btn btn-outline-danger"  style="margin-bottom: 10%; float: right;">mostrar porcentajes</button>
+          </div>
+         
+          
+          <div class="porcentajes" id="porcentajes" style="display: none;">
+            <div class="form-group">
+              <h1>porcentaje</h1>
+            </div>
+            <div class="form-group">
+              <label for="">Porcentaje Auxilio de Transporte</label>
+              <input type="number" class="form-control"  id="transporte" value="117172"> 
+            </div>
+            <div class="form-group">
+              <label for="">Porcentaje valor obligatorio de Salud</label>
+              <input type="number" class="form-control"  id="costosalud" value="4"> 
+            </div>
+            <div class="form-group"> 
+              <label for="">Porcentaje valor obligatorio de Pensíon</label>
+              <input type="number" class="form-control"  id="pension"  value="4"> </div>
+            <div class="form-group">
+              <label for="">Porcentaje Vacaciones</label>
+              <input type="number"class="form-control" id="vaciones" value="417">
+            </div>
+            <div class="form-group">
+              <label for="">Porcentaje caja de Compensacion</label>
+              <input type="number" class="form-control"id="cajadecompesacion" value="4">
+            </div>
+            <div class="form-group">
+              <label for="">Porcentaje Arl</label>
+              <input type="number" id="arl" class="form-control"  value="0522">
+            </div>
+            <div class="form-group"> 
+              <label for="">Porcentaje Prima</label>
+              <input type="number" id="prima" class="form-control"   value="83333"></div>
+            <div class="form-group"> <label for="">Porcentaje Cesantias</label>
+              <input type="number" id="cesantias" class="form-control"  value="83333">
+            </div>
+          </div>
+        </div>
+       
+        
+        <div class=" card  col-md-5" style="border: 2px red solid !important;  height: 100%; margin: 5px;" >
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="salud obligatoria">Sueldo:</label>
+            <span  id="pagofinal"></span>
+          </div>
+          <div class="form-group">
+            <label for=""> Subsidio de transporte:</label>
+            <span  id="subtransporte"></span>
+          </div>
+          <div class="form-group">
+            <label for=""> Aportes Salud Empleado :</label>
+            <span  id="aportessaludempleo"></span>
+          </div>
+          <div class="form-group">
+            <label for=""> Aportes  Cesantias Empleado :</label>
+            <span  id="aportescesantiasempleado"></span>
+          </div>
+          <div class="form-group">
+            <label for=""> Caja de Compensacíon :</label>
+            <span  id="cajadecompesacion1"></span>
+          </div>
+          <div class="form-group">
+            <label for=""> Vacaciones :</label>
+            <span  id="vacaciones"></span>   
+          </div>   
+          <div class="form-group">
+            <label for=""> ARL :</label>
+            <span  id="arlresultado" ></span>      
+          </div>
+          <div class="form-group">
+            <label for=""> Prima de Servicios :</label>
+            <span  id="primaresultado" ></span>      
+          </div>
+          <div class="form-group">
+            <label for=""> Cesantias :</label>
+            <span  id="cesantiasresultado" ></span>    
+          </div>
+          <hr>  
+          <div class="form-group">
+            <label for=""> Total a Pagar :</label>
+            <span  id="total" ></span>
+          </div>
+          
+        </div> 
+      </div>
+    </div>    
+  </div>
+ 
+  <script> 
+  const formatterPeso = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 000,
+    maximumFractionDigits: 000
+  });
+
+
+    function abrir(){
+      var opencontent=document.getElementById("porcentajes");
+      if (opencontent.style.display==="none"){
+        opencontent.style.display="block";
+      }else{
+        opencontent.style.display="none";
+      }
+    }
+
+    function calculardias() {
+      var fecha1 = moment('#iniciofecha');
+      var fecha2 = moment('#finfecha');
+
+        var fechaInicial = new Date(document.getElementById("fechaInicial").value);
+        var fechaFinal = new Date(document.getElementById("fechaFinal").value);
+        var actualDate = new Date();
+        if (fechaFinal > fechaInicial)
+        {
+            var diff = fechaFinal.getTime() - fechaInicial.getTime();
+            document.getElementById("daysDiscount").value = Math.round(diff / (1000 * 60 * 60 * 24));
+        }
+        else if (fechaFinal != null && fechaFinal < fechaInicial) {
+            alert("La fecha final no debe ser mayor a la fecha inicial");
+            document.getElementById("daysDiscount").value = 0;
+        }
+    }
+    
+    
+  function Calcular() {  
+    // var sueldo, auxiliotransporte,auxiliotransportetotal,sueldotexto,obligatoriosalud,obligatoriosaludMensaje,cesantias,cesantiastexto;  
+    valorsueldo = document.getElementById("valorsueldo").value;  
+    daysDiscount1 = document.getElementById("daysDiscount").value;  
+    costosalud =document.getElementById("costosalud").value;
+   pension = document.getElementById("pension").value;
+    vaciones=document.getElementById("vaciones").value;
+    cajadecompesacion=document.getElementById("cajadecompesacion").value;
+    transporte = document.getElementById("transporte").value;
+    arl = document.getElementById("arl").value;
+    prima = document.getElementById("prima").value;
+    cesantias=document.getElementById("cesantias").value;
+    //resutado valor sueldo
+    if (isNaN(valorsueldo) || isNaN(daysDiscount1)) {  
+      sueldotexto = "Es necesarios introducir dos números válidos";  
+    } else {  
+      //si no ponemos parseFloat concatenaría x con y  
+      sueldo=parseFloat(valorsueldo)/parseFloat(30)*parseFloat(daysDiscount1); 
+      sueldotexto= sueldo;  
+    }  
+    //auxilio de transporte
+    if (isNaN(transporte) || isNaN(daysDiscount1)) {  
+      auxiliotransportetotal = "Es necesarios introducir dos números válidos";  
+    } else {  
+      //si no ponemos parseFloat concatenaría x con y  
+      auxiliotransporte=parseFloat(transporte)/parseFloat(30)*parseFloat(daysDiscount1);
+      auxiliotransportetotal= auxiliotransporte;  
+    }  
+    //saludObligatoria
+    if (isNaN(valorsueldo) || isNaN(costosalud)) {  
+      obligatoriosalud = "Es necesarios introducir dos números válidos";  
+    } else {  
+      obligatoriosaludMensaje=parseFloat(sueldotexto)*parseFloat(costosalud)/parseFloat(100);  
+      obligatoriosalud= obligatoriosaludMensaje;  
+    }  
+       //cesantiasObligatoria
+       if (isNaN(valorsueldo) || isNaN(costosalud)) {  
+        cesantiasobligatorias = "Es necesarios introducir dos números válidos";  
+    } else {  
+      cesantiastexto=parseFloat(sueldotexto)*parseFloat(costosalud)/parseFloat(100);  
+      cesantiasobligatorias= cesantiastexto;  
+    }  
+
+    //vacaciones
+    if (sueldotexto===vaciones) {  
+        vacaciones = "Es necesarios introducir dos números válidos";  
+    } else {  
+      vacacionestexto=parseFloat(sueldotexto)*parseFloat(vaciones)/parseFloat(10000);  
+      vacaciones= vacacionestexto;  
+    }  
+    //caja de compensacion
+    if (sueldotexto === cajadecompesacion) {  
+      caja = "Es necesarios introducir dos números válidos";  
+    } else {  
+      cajatexto=parseFloat(sueldotexto)*parseFloat(cajadecompesacion)/parseFloat(100);  
+      caja= cajatexto;  
+    }  
+      //arl
+      if (sueldotexto=== arl) {  
+      arl = "Es necesarios introducir dos números válidos";  
+    } else {  
+      arltexto=parseFloat(sueldotexto)*parseFloat(arl)/100000;  
+      arl= arltexto;  
+    } 
+    //prima
+    if (sueldotexto === prima) {  
+     prima = "Es necesarios introducir dos números válidos";  
+    } else {  
+     primatexto=parseFloat(sueldotexto)*parseFloat(prima)/1000000; 
+     prima=primatexto;  
+    } 
+    //cesantias
+    if (valorsueldo===cesantias) {  
+     cesantias = "Es necesarios introducir dos números válidos";  
+    } else {  
+      cesantiastexto=parseFloat(sueldotexto)*parseFloat(cesantias)/1000000;  
+     cesantias=cesantiastexto;  
+    } 
+
+    //total
+    if (valorsueldo===cesantias) {  
+     total = "Es necesarios introducir dos números válidos";  
+    } else {  
+     totaltexto=parseFloat(sueldotexto)+parseFloat(auxiliotransportetotal)-parseFloat(obligatoriosalud)-parseFloat(cesantiasobligatorias);  
+     total=totaltexto;  
+    } 
+    //
+   
+    document.getElementById("pagofinal").innerText =formatterPeso.format (sueldotexto); 
+    document.getElementById("subtransporte").innerText =formatterPeso.format (auxiliotransportetotal);  
+    document.getElementById("aportessaludempleo").innerText =formatterPeso.format(obligatoriosalud);
+    document.getElementById("aportescesantiasempleado").innerText =formatterPeso.format(cesantiasobligatorias);
+    document.getElementById("vacaciones").innerText =formatterPeso.format(vacaciones);
+    document.getElementById("cajadecompesacion1").innerText =formatterPeso.format(caja);
+    document.getElementById("arlresultado").innerText =formatterPeso.format(arl);
+    document.getElementById("primaresultado").innerText =formatterPeso.format (prima);
+    document.getElementById("cesantiasresultado").innerText =formatterPeso.format(cesantias);
+    document.getElementById("total").innerText =formatterPeso.format(total);
+
+  }  
+  </script>  
+<script>
+  function habilitar(value)
+  {
+    if(value==true)
+    {
+      // habilitamos
+      document.getElementById("dias").disabled=true;
+              document.getElementById("transporte").disabled=true;
+    }else if(value==false){
+      // deshabilitamos
+      document.getElementById("dias").disabled=false;
+              document.getElementById("transporte").disabled=false;
+             
+    }
+  }
+</script>
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+
+  <script src="http://momentjs.com/downloads/moment.min.js"></script>
+  <script>
+      
+
+  </script>
+</body>
+</html>
